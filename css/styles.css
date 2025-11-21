@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto+Slab:400,700|Roboto:400,500,700,900&display=swap');
-
+/* :root {
+    --title-color: white;
+    --main-text-color: #dddddd;
+    --info-color: #aaaaaa;
+    --primary-color: #47cfac;
+    --secondary-color: #22272d;
+    --accent-color: #004297;
+    --background-color: #08002c; 
+} */
 body {
     font-family: 'Roboto Mono', monospace;
     margin: 0;
     padding: 0;
-    
+    background-color: var(--background-color);
+    color: white;
 }
+
 a {
     text-decoration: none;
     display: inline;
@@ -17,6 +27,7 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
+    
 }
 .grid-container {
     max-width: 980px;
@@ -34,7 +45,7 @@ header .header-icons-container {
     width: 100%;
     height: 50px;
     display: grid;
-    background-color: #47cfac;
+    background-color: #003079;
 }
 header .header-icons-container .icons {
     width: 300px;
@@ -76,10 +87,8 @@ nav .profile-link a {
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     height: 100%;
-    background-image: url('../assets/img/Cover.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    position: relative; /* needed for the pseudo-element background */
+    overflow: hidden; /* ensure blurred edges don't overflow */
 }
 .home-main section {
     display: grid;
@@ -87,6 +96,22 @@ nav .profile-link a {
     justify-items: center;
     height: 350px;
     margin-top: 80px;
+    position: relative; /* place content above the blurred background */
+    z-index: 1;
+}
+
+/* place the background image in a pseudo-element so we can blur it */
+.home-main::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top/right/bottom/left: 0 */
+    background-image: url('../assets/img/fondo-index-1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(7px);
+    transform: scale(1.03); /* slightly scale to avoid visible edges after blur */
+    z-index: 0;
 }
 .home-main-text {
     font-family: 'Roboto mono', monospace;
@@ -96,6 +121,14 @@ nav .profile-link a {
     color: black;
     text-align: center;
     color: white;
+    text-shadow:  2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    2px 0 0 #000,
+    -2px 0 0 #000,
+    0 2px 0 #000,
+    0 -2px 0 #000;
 }
 .home-main-button {
     width: 110px;
