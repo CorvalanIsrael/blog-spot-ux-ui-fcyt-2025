@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Completa de CSS Grid - Mi Blog Personal</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/font/flaticon.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link href="/node_modules/@flaticon/flaticon-uicons/css/bold/all.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  
+    <style>
+        .main-title{
+            text-align: center;
+            margin-top: 20px;
+            color: var(--title-color);
+        }
+        .blog-content{
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 0 20px;
+            color: var(--main-text-color);
+        }
+        .blog-content h2 {
+            color: var(--subtitle-color);
+            margin-top: 30px;
+            border-bottom: 1px solid var(--subtitle-color);
+            padding-bottom: 10px;
+        }
+        .blog-content h3 {
+            color: var(--primary-color);
+            margin-top: 25px;
+        }
+        .code-example {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+        }
+        .grid-item {
+            background-color: var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 3px;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        .note {
+            background-color: rgba(71, 207, 172, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <section class="header-icons-container">
+            <div class="icons">
+                <a href="https://github.com/CorvalanIsrael" ><span class="fi fi-brands-github"></span></a>
+                <a href="https://www.instagram.com/401_forbiden/"><span class="flaticon-011-instagram"></span></a>
+                <a href="https://www.linkedin.com/in/israel-corvalan-bornemann-392a842b7/"><span class="flaticon-010-linkedin"></span></a>
+            </div>
+        </section>  
+
+        <nav>
+            <section class="nav-logo-container">
+                <a href="/"><img src="/assets/img/Logo-negro.png" alt="Logo de mi blog principal"></a>
+            </section>
+
+            <section class="profile-link">
+                <a href="/blogs.html">Sobre mí</a>
+            </section>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="main-title">Guía Completa de CSS Grid</h1>
+        
+        <section class="blog-content">
+            <p>CSS Grid Layout es un sistema de diseño bidimensional que permite crear layouts complejos y responsivos de manera sencilla. A diferencia de Flexbox, que es unidimensional, Grid te permite controlar tanto filas como columnas simultáneamente.</p>
+
+            <h2>Conceptos Fundamentales</h2>
+            
+            <h3>Contenedor Grid</h3>
+            <p>Para crear un grid, necesitas definir un contenedor con la propiedad <code>display: grid</code>:</p>
+            
+            <div class="code-example">
+                .grid-container {<br>
+                &nbsp;&nbsp;display: grid;<br>
+                &nbsp;&nbsp;grid-template-columns: 1fr 1fr 1fr;<br>
+                &nbsp;&nbsp;grid-template-rows: auto;<br>
+                &nbsp;&nbsp;gap: 10px;<br>
+                }
+            </div>
+
+            <h3>Grid Template Columns y Rows</h3>
+            <p>Estas propiedades definen la estructura de tu grid:</p>
+            
+            <div class="code-example">
+                /* Tres columnas de igual ancho */<br>
+                grid-template-columns: 1fr 1fr 1fr;<br><br>
+                
+                /* Columnas con medidas mixtas */<br>
+                grid-template-columns: 200px 1fr 2fr;<br><br>
+                
+                /* Usando repeat() para patrones */<br>
+                grid-template-columns: repeat(3, 1fr);<br><br>
+                
+                /* Grid responsivo con auto-fit */<br>
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            </div>
+
+            <h3>Ejemplo Práctico</h3>
+            <p>Aquí tienes un ejemplo básico de un grid de 3 columnas:</p>
+            
+            <div class="grid-demo">
+                <div class="grid-item">Elemento 1</div>
+                <div class="grid-item">Elemento 2</div>
+                <div class="grid-item">Elemento 3</div>
+                <div class="grid-item">Elemento 4</div>
+                <div class="grid-item">Elemento 5</div>
+                <div class="grid-item">Elemento 6</div>
+            </div>
+
+            <h2>Posicionamiento de Elementos</h2>
+            
+            <h3>Grid Lines</h3>
+            <p>Puedes posicionar elementos usando líneas de grid:</p>
+            
+            <div class="code-example">
+                .grid-item {<br>
+                &nbsp;&nbsp;grid-column-start: 1;<br>
+                &nbsp;&nbsp;grid-column-end: 3;<br>
+                &nbsp;&nbsp;grid-row-start: 1;<br>
+                &nbsp;&nbsp;grid-row-end: 2;<br>
+                }<br><br>
+                
+                /* Forma abreviada */<br>
+                .grid-item {<br>
+                &nbsp;&nbsp;grid-column: 1 / 3;<br>
+                &nbsp;&nbsp;grid-row: 1 / 2;<br>
+                }
+            </div>
+
+            <h3>Grid Areas</h3>
+            <p>Una forma más intuitiva de definir layouts:</p>
+            
+            <div class="code-example">
+                .grid-container {<br>
+                &nbsp;&nbsp;display: grid;<br>
+                &nbsp;&nbsp;grid-template-areas: <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"header header header"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"sidebar content content"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"footer footer footer";<br>
+                }<br><br>
+                
+                .header { grid-area: header; }<br>
+                .sidebar { grid-area: sidebar; }<br>
+                .content { grid-area: content; }<br>
+                .footer { grid-area: footer; }
+            </div>
+
+            <h2>Propiedades Avanzadas</h2>
+            
+            <h3>Alineación</h3>
+            <div class="code-example">
+                /* Alineación en el eje principal */<br>
+                justify-items: start | end | center | stretch;<br><br>
+                
+                /* Alineación en el eje cruzado */<br>
+                align-items: start | end | center | stretch;<br><br>
+                
+                /* Alineación del grid completo */<br>
+                justify-content: start | end | center | stretch | space-around | space-between | space-evenly;<br>
+                align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+            </div>
+
+            <h3>Grid Implícito vs Explícito</h3>
+            <p>El grid explícito es el que defines con <code>grid-template-columns</code> y <code>grid-template-rows</code>. El grid implícito se crea automáticamente cuando colocas elementos fuera del grid explícito.</p>
+
+            <div class="code-example">
+                /* Controlar el tamaño de las filas/columnas implícitas */<br>
+                grid-auto-columns: 100px;<br>
+                grid-auto-rows: minmax(100px, auto);<br><br>
+                
+                /* Controlar el flujo de elementos */<br>
+                grid-auto-flow: row | column | dense;
+            </div>
+
+            <div class="note">
+                <strong>Consejo:</strong> Usa <code>grid-auto-flow: dense</code> para evitar espacios vacíos en tu layout cuando los elementos tienen diferentes tamaños.
+            </div>
+
+            <h2>Ejemplo de Layout Responsivo</h2>
+            
+            <div class="code-example">
+                .responsive-grid {<br>
+                &nbsp;&nbsp;display: grid;<br>
+                &nbsp;&nbsp;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));<br>
+                &nbsp;&nbsp;gap: 20px;<br>
+                &nbsp;&nbsp;padding: 20px;<br>
+                }
+            </div>
+
+            <p>Este código crea un grid que se adapta automáticamente al ancho disponible, mostrando tantas columnas como quepan con un mínimo de 300px por columna.</p>
+
+            <h2>Compatibilidad y Mejores Prácticas</h2>
+            
+            <p>CSS Grid tiene excelente soporte en navegadores modernos. Para navegadores más antiguos, puedes usar:</p>
+            
+            <div class="code-example">
+                @supports (display: grid) {<br>
+                &nbsp;&nbsp;/* Código moderno para navegadores que soportan Grid */<br>
+                }<br><br>
+                
+                @supports not (display: grid) {<br>
+                &nbsp;&nbsp;/* Fallback para navegadores antiguos */<br>
+                }
+            </div>
+
+            <div class="note">
+                <strong>Recuerda:</strong> Siempre prueba tu layout en diferentes dispositivos y navegadores. Las herramientas de desarrollo del navegador suelen tener excelente soporte para inspeccionar grids.
+            </div>
+
+            <p>CSS Grid es una herramienta poderosa que, una vez dominada, puede transformar completamente tu forma de crear layouts web. ¡Practica con ejemplos reales y no tengas miedo de experimentar!</p>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>© 2025 Mi Blog Personal. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

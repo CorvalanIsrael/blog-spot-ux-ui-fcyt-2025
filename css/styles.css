@@ -100,7 +100,7 @@ nav .profile-link {
     margin-right: 50px;
 }
 nav .profile-link a {
-    color: black;
+    color:var(--primary-color);
     border-bottom: 1px solid black;
 }
 
@@ -196,14 +196,14 @@ nav .profile-link a {
 .blogs-news-info-container p {
     margin-bottom: 35px;
 }
-.blogs-posts-container {
+/* .blogs-posts-container {
     padding: 0 50px 40px;
 }
 .blogs-posts-container h3 {
     border-bottom: 1px solid #cdd2da;  
     padding-bottom: 20px;
     text-align: center;
-}
+} */
 
 .blogs-button {
    border:  1px solid #48cfad;
